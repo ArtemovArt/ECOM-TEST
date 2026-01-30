@@ -1,0 +1,10 @@
+.searchBlockWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.heading {
+    margin: 0;
+}
+

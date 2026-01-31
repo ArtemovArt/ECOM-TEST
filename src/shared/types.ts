@@ -1,9 +1,9 @@
 export interface CardItemProps {
   description: string;
   img: string;
-  isFav: boolean;
+  isFav?: boolean;
   price: string;
-  isAddedInCard: boolean;
+  isAddedInCard?: boolean;
   id: string;
 }
 

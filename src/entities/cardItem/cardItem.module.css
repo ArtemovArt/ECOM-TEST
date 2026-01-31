@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  
 }
 
 .cardPriceSection {
@@ -24,9 +23,17 @@
 }
 
 .cardPrice {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cardPriceTop {
+  color: #bdbdbd;
+}
+
+.cardPriceBottom {
+  font-weight: bold;
 }
 
 .svgButtonWrapper {
@@ -36,7 +43,6 @@
 
 .sneakerImg {
   width: 70%;
-  
 }
 
 .sneakerName {

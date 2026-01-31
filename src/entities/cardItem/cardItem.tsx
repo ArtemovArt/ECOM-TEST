@@ -20,12 +20,14 @@ export const CardItem: React.FC<CardItemProps> = ({ description, img, isFav, pri
       </Typography>
       <div className={styles.cardPriceSection}>
         <div className={styles.cardPrice}>
-          <Typography as="span">{consts.cardItem.price}</Typography>
-          <Typography as="span">
+          <Typography as="span" className={styles.cardPriceTop}>
+            {consts.cardItem.price}
+          </Typography>
+          <Typography as="span" className={styles.cardPriceBottom}>
             {price} {consts.cardItem.pricePostfix}
           </Typography>
         </div>
-        {isAddedInCard ? (
+        {!isAddedInCard ? (
           <button className={styles.svgButtonWrapper} onClick={() => console.log('hi')}>
             <img src={addToCartButtonIcon} />
           </button>

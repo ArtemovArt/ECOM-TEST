@@ -8,10 +8,10 @@ export const consts = {
     logoDescription: 'Тестовое задание для ecom.tech',
   },
   cardItem: {
-    price: 'Цена:',
+    price: 'ЦЕНА:',
     pricePostfix: 'руб.',
   },
   searchBlock: {
     title: 'Все кроссовки',
   },
-} as const
+} as const;

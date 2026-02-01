@@ -15,5 +15,6 @@ export const useGetData = (id?: string) => {
       return res.json();
     },
   });
+
   return { isPending, data, error };
 };

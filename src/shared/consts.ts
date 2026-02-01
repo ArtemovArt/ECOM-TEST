@@ -13,5 +13,6 @@ export const consts = {
   },
   searchBlock: {
     title: 'Все кроссовки',
+    nothingFound: 'По вашему запросу ничего не найдено',
   },
 } as const;

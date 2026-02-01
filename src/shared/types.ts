@@ -14,6 +14,7 @@ export interface IHeaderActionItem {
 
 export interface CardContainerProps {
   cards: CardItemProps[];
+  filterQuery: string;
 }
 
 export interface TypographyProps {
@@ -34,4 +35,10 @@ export type CardsArray = CardItemProps[];
 export interface SearchInputProps {
   options: CardItemProps[];
   placeholder?: string;
+}
+
+export interface SneakersStore {
+  favs: CardItemProps[];
+
+  setFav: (newData: CardItemProps[]) => void;
 }

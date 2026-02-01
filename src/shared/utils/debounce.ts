@@ -1,7 +1,13 @@
-export const debounce = function (fn: (...args: unknown[]) => unknown, t: number = 1000) {
-  let timer: number = 0;
-  return function (...args: unknown[]) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), t);
+export const debounce = <Args extends unknown[], Return>(fn: (...args: Args) => Return, t: number = 300) => {
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  return function (...args: Args) {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(() => {
+      fn(...args);
+      timer = null;
+    }, t);
   };
 };

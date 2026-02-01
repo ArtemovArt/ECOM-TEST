@@ -4,13 +4,17 @@ import { SearchInput } from '../../shared/searchInput/searchInput';
 
 import styles from './searchBlock.module.css';
 
-export const SearchBlock = () => {
+interface SearchBlockProps {
+  setFilterQuery: (query: string) => void;
+}
+
+export const SearchBlock: React.FC<SearchBlockProps> = ({ setFilterQuery }) => {
   return (
     <div className={styles.searchBlockWrapper}>
       <Heading level="2" className={styles.heading}>
         {consts.searchBlock.title}
       </Heading>
-      <SearchInput />
+      <SearchInput setFilterQuery={setFilterQuery} />
     </div>
   );
 };

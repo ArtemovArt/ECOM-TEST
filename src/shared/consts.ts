@@ -15,4 +15,7 @@ export const consts = {
     title: 'Все кроссовки',
     nothingFound: 'По вашему запросу ничего не найдено',
   },
+  errors: {
+    portalError: 'Отсутствует контейнер портала',
+  },
 } as const;

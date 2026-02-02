@@ -24,6 +24,7 @@ export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery
               isAddedInCard={card?.isAddedInCard}
               isFav={card?.isFav}
               price={card?.price}
+              title={card?.title}
             />
           ))}
         </div>

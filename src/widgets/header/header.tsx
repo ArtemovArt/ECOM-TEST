@@ -1,7 +1,7 @@
-import { ActionsBlock } from '../../entities/headerActionsBlock/headerActionsBlock'
-import { Logo } from '../../entities/logo/logo'
+import { ActionsBlock } from '../../entities/headerActionsBlock/headerActionsBlock';
+import { Logo } from '../../entities/logo/logo';
 
-import styles from './header.module.css'
+import styles from './header.module.css';
 
 export const Header = () => {
   return (
@@ -9,5 +9,5 @@ export const Header = () => {
       <Logo />
       <ActionsBlock />
     </div>
-  )
-}
+  );
+};

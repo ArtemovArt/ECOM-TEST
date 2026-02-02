@@ -1,18 +1,24 @@
 import favIcon from '../../assets/activeFavIcon.svg';
-import addToCartButtonIcon from '../../assets/addToCartButtonIcon.svg';
 import addedToCartIcon from '../../assets/addedToCartIcon.svg';
 import unfavIcon from '../../assets/unactiveFavIcon.svg';
+import { useSneakersStore } from '../../features/store/store';
 import { consts } from '../../shared/consts';
 import type { CardItemProps } from '../../shared/types';
 import { Typography } from '../../shared/typography/typography';
 
 import styles from './cardItemModal.module.css';
 
-export const CardItemModal: React.FC<CardItemProps> = ({ description, img, isFav, price, isAddedInCard, title }) => {
+export const CardItemModal: React.FC<CardItemProps> = ({ description, img, price, isAddedInCard, title, id }) => {
+  const { setFav, removeFav, checkIsFav } = useSneakersStore();
   return (
     <>
       <div className={styles.cardTopContent}>
-        <img src={isFav ? favIcon : unfavIcon} />
+        <button
+          className={styles.svgButtonWrapper}
+          onClick={() => (!checkIsFav(id) ? setFav(id, { description, img, price, title }) : removeFav(id))}
+        >
+          <img src={checkIsFav(id) ? favIcon : unfavIcon} />
+        </button>
 
         <div className={styles.cardText}>
           <Typography as="span" className={styles.sneakerTitle}>
@@ -36,8 +42,8 @@ export const CardItemModal: React.FC<CardItemProps> = ({ description, img, isFav
                 </Typography>
               </div>
               {!isAddedInCard ? (
-                <button className={styles.svgButtonWrapper} onClick={() => console.log('hi')}>
-                  <img src={addToCartButtonIcon} />
+                <button className={styles.buttonAddToCart} onClick={() => console.log('hi')}>
+                  <Typography as="p">Купить</Typography>
                 </button>
               ) : (
                 <img src={addedToCartIcon} />

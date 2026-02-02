@@ -1,0 +1,65 @@
+.cardWrapper {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #f8f8f8;
+  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.cardTopContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardPriceWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardPriceSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardPriceTop {
+  color: #bdbdbd;
+}
+
+.cardPriceBottom {
+  font-weight: bold;
+}
+
+.svgButtonWrapper {
+  border: none;
+  background: none;
+}
+
+.sneakerImg {
+}
+
+.sneakerTitle {
+  font-weight: bold;
+  font-size: 24px;
+}
+

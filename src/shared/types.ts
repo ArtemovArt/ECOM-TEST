@@ -1,4 +1,5 @@
 export interface CardItemProps {
+  title: string;
   description: string;
   img: string;
   isFav?: boolean;
@@ -41,4 +42,14 @@ export interface SneakersStore {
   favs: CardItemProps[];
 
   setFav: (newData: CardItemProps[]) => void;
+}
+
+export type ContainerOptions = { id: string; mountNode?: HTMLElement };
+
+export interface ModalHook {
+  isOpen: boolean;
+  modalData: CardItemProps | null;
+  open: () => void;
+  close: () => void;
+  setModalData: (item: CardItemProps) => void;
 }

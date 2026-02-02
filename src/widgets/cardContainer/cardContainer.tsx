@@ -8,7 +8,7 @@ import styles from './cardContainer.module.css';
 
 export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery = '' }) => {
   const cardsToMap = filterQuery ? filterFn(cards, filterQuery) : cards;
-  console.log('cardsToMap', cardsToMap);
+
   return (
     <>
       {cardsToMap.length === 0 && filterQuery ? (
@@ -17,12 +17,12 @@ export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery
         <div className={styles.contentWrapper}>
           {cardsToMap?.map((card) => (
             <CardItem
-              key={card?.id}
-              id={card?.id}
+              key={card.id}
+              id={card.id}
               img={card?.img}
               description={card?.description}
-              isAddedInCard={card?.isAddedInCard}
-              isFav={card?.isFav}
+              // isAddedInCard={card?.isAddedInCard}
+
               price={card?.price}
               title={card?.title}
             />

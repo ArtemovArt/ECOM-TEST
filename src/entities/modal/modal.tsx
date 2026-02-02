@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useClickAway } from 'react-use';
 
+import { Heading } from '../../shared/heading/heading';
 import { useModal } from '../../shared/hooks/useModal';
-import { CardItemModal } from '../cardItemModal/cardItemModal';
 
 import styles from './modal.module.css';
 
@@ -52,13 +52,18 @@ export const Modal = () => {
   if (!modal.isOpen) return null;
 
   return (
-    <dialog className={styles.dialog} ref={modalRef}>
+    <dialog className={modal.modalHeader ? styles.dialogForActions : styles.dialog} ref={modalRef}>
+      {modal.modalHeader && (
+        <Heading level="2" className={styles.modalHeader}>
+          {modal.modalHeader}
+        </Heading>
+      )}
       <div className={styles.modalContent}>
         <button onClick={modal.close} className={styles.close}>
           X
         </button>
 
-        {modal.modalData && <CardItemModal {...modal.modalData} />}
+        {modal.modalData && modal.modalData}
       </div>
     </dialog>
   );

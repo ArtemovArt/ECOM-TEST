@@ -2,31 +2,39 @@ import favIcon from '../../assets/activeFavIcon.svg';
 import addToCartButtonIcon from '../../assets/addToCartButtonIcon.svg';
 import addedToCartIcon from '../../assets/addedToCartIcon.svg';
 import unfavIcon from '../../assets/unactiveFavIcon.svg';
+import { useSneakersStore } from '../../features/store/store';
 import { consts } from '../../shared/consts';
 import { useModal } from '../../shared/hooks/useModal';
 import type { CardItemProps } from '../../shared/types';
 import { Typography } from '../../shared/typography/typography';
+import { CardItemModal } from '../cardItemModal/cardItemModal';
 
 import styles from './cardItem.module.css';
 
-export const CardItem: React.FC<CardItemProps> = ({ description, img, isFav, price, isAddedInCard, id, title }) => {
+export const CardItem: React.FC<CardItemProps> = ({ description, img, price, isAddedInCard, id, title }) => {
   const { open, setModalData } = useModal();
+  const { setFav, removeFav, checkIsFav } = useSneakersStore();
   return (
-    <div
-      className={styles.cardWrapper}
-      onClick={() => {
-        setModalData({ description, img, isFav, price, isAddedInCard, id, title });
-        open();
-      }}
-    >
+    <div className={styles.cardWrapper}>
       <div className={styles.cardTopContent}>
-        <img src={isFav ? favIcon : unfavIcon} />
+        <button
+          className={styles.svgButtonWrapper}
+          onClick={() => (!checkIsFav(id) ? setFav(id, { description, img, price, title }) : removeFav(id))}
+        >
+          <img src={checkIsFav(id) ? favIcon : unfavIcon} />
+        </button>
         <img className={styles.sneakerImg} src={img} />
       </div>
 
-      <Typography as="span" className={styles.sneakerName}>
-        {title}
-      </Typography>
+      <div
+        className={styles.sneakerTitle}
+        onClick={() => {
+          setModalData(<CardItemModal description={description} title={title} img={img} price={price} id={id} />);
+          open();
+        }}
+      >
+        <Typography as="span">{title}</Typography>
+      </div>
 
       <div className={styles.cardPriceSection}>
         <div className={styles.cardPrice}>

@@ -1,4 +1,4 @@
-import { Portal } from '../features/store/portal/portal';
+import { Portal } from '../features/portal/portal';
 import './App.css';
 
 import { Layout } from './layout/layout';

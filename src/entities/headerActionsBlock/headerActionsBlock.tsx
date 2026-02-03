@@ -25,8 +25,6 @@ export const ActionsBlock = () => {
         img={cartIcon}
         actionName={sum}
         action={() => {
-          // setModalData(<CardContainer cards={cartArr} />);
-          // setModalHeader(consts.headerActionItemsNames.cart);
           open('cart', null, consts.headerActionItemsNames.cart);
         }}
       />
@@ -34,12 +32,9 @@ export const ActionsBlock = () => {
         img={favIcon}
         actionName={consts.headerActionItemsNames.favourites}
         action={() => {
-          // setModalData(<CardContainer cards={cards} />);
-          // setModalHeader(consts.headerActionItemsNames.favourites);
           open('favs', null, consts.headerActionItemsNames.favourites);
         }}
       />
-      {/* <HeaderActionItem img={profileIcon} actionName={consts.headerActionItemsNames.profile} /> */}
     </div>
   );
 };

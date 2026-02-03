@@ -5,3 +5,14 @@
     grid-row-gap: 20px;
     
 }
+
+.noItems {
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}

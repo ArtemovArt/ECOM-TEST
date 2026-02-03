@@ -4,3 +4,19 @@
     align-items: center;
     width: 35%;
 }
+
+@media (max-width: 480px) {
+  .headerActionsBlockWrapper {
+    
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 1025px) {
+  .headerActionsBlockWrapper {
+    
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}

@@ -1,19 +1,22 @@
 import favIcon from '../../assets/activeFavIcon.svg';
 import addToCartButtonIcon from '../../assets/addToCartButtonIcon.svg';
 import addedToCartIcon from '../../assets/addedToCartIcon.svg';
+import trashIcon from '../../assets/icons-trash.svg';
 import unfavIcon from '../../assets/unactiveFavIcon.svg';
+import { useCartStore } from '../../features/store/cartStore';
 import { useSneakersStore } from '../../features/store/store';
 import { consts } from '../../shared/consts';
 import { useModal } from '../../shared/hooks/useModal';
 import type { CardItemProps } from '../../shared/types';
 import { Typography } from '../../shared/typography/typography';
-import { CardItemModal } from '../cardItemModal/cardItemModal';
 
 import styles from './cardItem.module.css';
 
-export const CardItem: React.FC<CardItemProps> = ({ description, img, price, isAddedInCard, id, title }) => {
-  const { open, setModalData } = useModal();
+export const CardItem: React.FC<CardItemProps> = ({ description, img, price, id, title }) => {
+  const { open } = useModal();
   const { setFav, removeFav, checkIsFav } = useSneakersStore();
+  const { addItemInCart, cart, removeItemFromCart } = useCartStore();
+
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.cardTopContent}>
@@ -24,13 +27,18 @@ export const CardItem: React.FC<CardItemProps> = ({ description, img, price, isA
           <img src={checkIsFav(id) ? favIcon : unfavIcon} />
         </button>
         <img className={styles.sneakerImg} src={img} />
+        {cart.has(id) && (
+          <button className={styles.svgButtonWrapper} onClick={() => removeItemFromCart(id)}>
+            <img src={trashIcon} />
+          </button>
+        )}
       </div>
 
       <div
         className={styles.sneakerTitle}
         onClick={() => {
-          setModalData(<CardItemModal description={description} title={title} img={img} price={price} id={id} />);
-          open();
+          // setModalData(<CardItemModal description={description} title={title} img={img} price={price} id={id} />);
+          open('card', { description, img, price, id, title });
         }}
       >
         <Typography as="span">{title}</Typography>
@@ -45,12 +53,15 @@ export const CardItem: React.FC<CardItemProps> = ({ description, img, price, isA
             {price} {consts.cardItem.pricePostfix}
           </Typography>
         </div>
-        {!isAddedInCard ? (
-          <button className={styles.svgButtonWrapper} onClick={() => console.log('hi')}>
+        {cart.has(id) ? (
+          <img src={addedToCartIcon} />
+        ) : (
+          <button
+            className={styles.svgButtonWrapper}
+            onClick={() => addItemInCart(id, { description, img, price, title })}
+          >
             <img src={addToCartButtonIcon} />
           </button>
-        ) : (
-          <img src={addedToCartIcon} />
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import favIcon from '../../assets/activeFavIcon.svg';
-import addedToCartIcon from '../../assets/addedToCartIcon.svg';
 import unfavIcon from '../../assets/unactiveFavIcon.svg';
+import { useCartStore } from '../../features/store/cartStore';
 import { useSneakersStore } from '../../features/store/store';
 import { consts } from '../../shared/consts';
 import type { CardItemProps } from '../../shared/types';
@@ -8,8 +8,9 @@ import { Typography } from '../../shared/typography/typography';
 
 import styles from './cardItemModal.module.css';
 
-export const CardItemModal: React.FC<CardItemProps> = ({ description, img, price, isAddedInCard, title, id }) => {
+export const CardItemModal: React.FC<CardItemProps> = ({ description, img, price, title, id }) => {
   const { setFav, removeFav, checkIsFav } = useSneakersStore();
+  const { cart, addItemInCart } = useCartStore();
   return (
     <>
       <div className={styles.cardTopContent}>
@@ -41,12 +42,17 @@ export const CardItemModal: React.FC<CardItemProps> = ({ description, img, price
                   {price} {consts.cardItem.pricePostfix}
                 </Typography>
               </div>
-              {!isAddedInCard ? (
-                <button className={styles.buttonAddToCart} onClick={() => console.log('hi')}>
-                  <Typography as="p">Купить</Typography>
+              {!cart.has(id) ? (
+                <button
+                  className={styles.buttonAddToCart}
+                  onClick={() => addItemInCart(id, { description, img, price, title })}
+                >
+                  <Typography as="p">{consts.modal.buyButtonText}</Typography>
                 </button>
               ) : (
-                <img src={addedToCartIcon} />
+                <div className={styles.alreadyInCart}>
+                  <Typography as="p">{consts.modal.alreadyInCart}</Typography>
+                </div>
               )}
             </div>
           </div>

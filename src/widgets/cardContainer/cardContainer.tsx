@@ -9,6 +9,8 @@ import styles from './cardContainer.module.css';
 export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery = '' }) => {
   const cardsToMap = filterQuery ? filterFn(cards, filterQuery) : cards;
 
+  if (cardsToMap.length === 0) return <Typography as="p">{consts.modal.noItems}</Typography>;
+
   return (
     <>
       {cardsToMap.length === 0 && filterQuery ? (
@@ -21,8 +23,6 @@ export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery
               id={card.id}
               img={card?.img}
               description={card?.description}
-              // isAddedInCard={card?.isAddedInCard}
-
               price={card?.price}
               title={card?.title}
             />

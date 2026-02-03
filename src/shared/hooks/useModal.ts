@@ -1,13 +1,16 @@
 import { create } from 'zustand';
 
-import type { ModalHook } from '../types';
+import type { ModalStore } from '../types';
 
-export const useModal = create<ModalHook>((set) => ({
+export const useModal = create<ModalStore>((set) => ({
   isOpen: false,
   modalData: null,
   modalHeader: '',
-  open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: false }),
-  setModalData: (children) => set({ modalData: children }),
-  setModalHeader: (newHeader) => set({ modalHeader: newHeader }),
+  type: null,
+  props: null,
+  open: (type, props = null, modalHeader = '') => set({ isOpen: true, type, props, modalHeader }),
+
+  close: () => set({ isOpen: false, type: null, props: null, modalHeader: '' }),
+  // setModalData: (children) => set({ modalData: children }),
+  // setModalHeader: (newHeader) => set({ modalHeader: newHeader }),
 }));

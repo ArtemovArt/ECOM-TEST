@@ -5,7 +5,7 @@ export interface CardItemProps {
   description: string;
   img: string;
   isFav?: boolean;
-  price: string;
+  price: number;
   isAddedInCard?: boolean;
   id: string;
 }
@@ -14,7 +14,7 @@ export interface CardItem {
   title: string;
   description: string;
   img: string;
-  price: string;
+  price: number;
   id: string;
 }
 
@@ -59,17 +59,21 @@ export interface CartStore {
   addItemInCart: (id: string, newData: Omit<CardItem, 'id'>) => void;
   removeItemFromCart: (id: string) => void;
   checkIsInCart: (id: string) => boolean;
+  // getCartSum: () => number;
 }
 
 export type ContainerOptions = { id: string; mountNode?: HTMLElement };
 
-export interface ModalHook {
-  isOpen: boolean;
+type ModalType = 'cart' | 'favs' | 'card' | null;
 
+export interface ModalStore {
+  isOpen: boolean;
+  type: ModalType;
   modalData: ReactNode | null;
   modalHeader?: string;
-  open: () => void;
+  props?: CardItemProps | null;
   close: () => void;
-  setModalData: (children: ReactNode) => void;
-  setModalHeader: (newHeader: string) => void;
+  open: (type: ModalType, props?: CardItemProps | null, header?: string) => void;
+  // setModalData: (children: ReactNode) => void;
+  // setModalHeader: (newHeader: string) => void;
 }

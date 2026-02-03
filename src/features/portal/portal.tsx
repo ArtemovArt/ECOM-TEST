@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Modal } from '../../entities/modal/modal';
 import { consts } from '../../shared/consts';
+import { Modal } from '../../widgets/modal/modal';
 
 type PortalProps = { id: string };
 

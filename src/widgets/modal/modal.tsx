@@ -1,13 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { useClickAway } from 'react-use';
 
+import { CardItemModal } from '../../entities/cardItemModal/cardItemModal';
+import { CartModal } from '../../entities/cartModal/cartModal';
+import { FavsModal } from '../../entities/favsModal/favsModal';
 import { Heading } from '../../shared/heading/heading';
 import { useModal } from '../../shared/hooks/useModal';
 
 import styles from './modal.module.css';
 
 export const Modal = () => {
-  const modal = useModal();
+  const { isOpen, type, props, modalHeader, close } = useModal();
 
   const modalRef = useRef<HTMLDialogElement | null>(null);
 
@@ -17,26 +20,26 @@ export const Modal = () => {
     if (!modalRef.current) return;
 
     // `showModal` и `close` - это нативные методы, предоставляемые HTML-элементом `dialog`
-    if (modal.isOpen) {
+    if (isOpen) {
       modalRef.current.showModal();
     } else {
       modalRef.current.close();
     }
-  }, [modal.isOpen]);
+  }, [isOpen]);
 
-  useClickAway(modalContentRef, modal.close);
+  useClickAway(modalContentRef, close);
 
   useEffect(() => {
     const handleWrapperClick = (event: MouseEvent) => {
       const { target } = event;
 
       if (target instanceof Node && modalRef.current === target) {
-        modal.close();
+        close();
       }
     };
     const handleEscapePress = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        modal.close();
+        close();
       }
     };
 
@@ -47,23 +50,27 @@ export const Modal = () => {
       window.removeEventListener('click', handleWrapperClick);
       window.removeEventListener('keydown', handleEscapePress);
     };
-  }, [modal]);
+  }, [close]);
 
-  if (!modal.isOpen) return null;
+  if (!isOpen) return null;
 
   return (
-    <dialog className={modal.modalHeader ? styles.dialogForActions : styles.dialog} ref={modalRef}>
-      {modal.modalHeader && (
-        <Heading level="2" className={styles.modalHeader}>
-          {modal.modalHeader}
-        </Heading>
-      )}
+    <dialog className={modalHeader ? styles.dialogForActions : styles.dialog} ref={modalRef}>
       <div className={styles.modalContent}>
-        <button onClick={modal.close} className={styles.close}>
-          X
-        </button>
+        <div>
+          <button onClick={close} className={styles.close}>
+            X
+          </button>
+          {modalHeader && (
+            <Heading level="2" className={styles.modalHeader}>
+              {modalHeader}
+            </Heading>
+          )}
+        </div>
 
-        {modal.modalData && modal.modalData}
+        {type === 'cart' && <CartModal />}
+        {type === 'favs' && <FavsModal />}
+        {type === 'card' && props && <CardItemModal {...props} />}
       </div>
     </dialog>
   );

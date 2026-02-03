@@ -59,7 +59,6 @@ export interface CartStore {
   addItemInCart: (id: string, newData: Omit<CardItem, 'id'>) => void;
   removeItemFromCart: (id: string) => void;
   checkIsInCart: (id: string) => boolean;
-  // getCartSum: () => number;
 }
 
 export type ContainerOptions = { id: string; mountNode?: HTMLElement };
@@ -74,6 +73,8 @@ export interface ModalStore {
   props?: CardItemProps | null;
   close: () => void;
   open: (type: ModalType, props?: CardItemProps | null, header?: string) => void;
-  // setModalData: (children: ReactNode) => void;
-  // setModalHeader: (newHeader: string) => void;
+}
+
+export interface FallbackProps {
+  err: Error;
 }

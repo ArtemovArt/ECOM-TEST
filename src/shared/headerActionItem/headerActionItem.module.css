@@ -1,5 +1,9 @@
 .headerActionItemWrapper {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  &:hover {
+    color: color-mix(in srgb, gray, white 15%);
+  }
 }

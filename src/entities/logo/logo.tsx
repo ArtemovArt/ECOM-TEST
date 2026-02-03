@@ -1,9 +1,9 @@
-import imgLogo from '../../assets/image 4.png'
-import { consts } from '../../shared/consts'
-import { Heading } from '../../shared/heading/heading'
-import { Typography } from '../../shared/typography/typography'
+import imgLogo from '../../assets/image 4.png';
+import { consts } from '../../shared/consts';
+import { Heading } from '../../shared/heading/heading';
+import { Typography } from '../../shared/typography/typography';
 
-import styles from './logo.module.css'
+import styles from './logo.module.css';
 
 export const Logo = () => {
   return (
@@ -16,5 +16,5 @@ export const Logo = () => {
         <Typography as="span">{consts.logoTexts.logoDescription}</Typography>
       </div>
     </div>
-  )
-}
+  );
+};

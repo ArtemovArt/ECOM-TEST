@@ -31,7 +31,10 @@ export const CardItemModal: React.FC<CardItemProps> = ({ description, img, price
         </div>
 
         <div className={styles.cardPriceWrapper}>
-          <img className={styles.sneakerImg} src={img} />
+          <div className={styles.sneakerImg}>
+            <img src={img} />
+          </div>
+
           <div className={styles.cardPriceWrapper}>
             <div className={styles.cardPriceSection}>
               <div className={styles.cardPrice}>

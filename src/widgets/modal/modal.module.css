@@ -71,3 +71,30 @@
     opacity: 1;
   }
 }
+
+
+@media (max-width: 480px) {
+  .dialog {
+    overflow: scroll;
+    width: auto;
+    scrollbar-width: none;
+  }
+  .dialogForActions {
+    overflow: scroll;
+    width: auto;
+    scrollbar-width: none;
+  }
+}
+
+@media (max-width: 1025px) {
+  .dialog {
+    overflow: scroll;
+    width: auto;
+    scrollbar-width: none;
+  }
+  .dialogForActions {
+    overflow: scroll;
+    width: auto;
+    scrollbar-width: none;
+  }
+}

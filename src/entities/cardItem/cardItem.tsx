@@ -26,7 +26,9 @@ export const CardItem: React.FC<CardItemProps> = ({ description, img, price, id,
         >
           <img src={checkIsFav(id) ? favIcon : unfavIcon} />
         </button>
-        <img className={styles.sneakerImg} src={img} />
+        <div className={styles.sneakerImg}>
+          <img src={img} />
+        </div>
         {cart.has(id) && (
           <button className={styles.svgButtonWrapper} onClick={() => removeItemFromCart(id)}>
             <img src={trashIcon} />

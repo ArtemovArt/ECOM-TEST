@@ -1,0 +1,8 @@
+.errorContainer{
+    margin: auto;
+    text-align: center;
+}
+
+.errorDescription {
+    color: red;
+}

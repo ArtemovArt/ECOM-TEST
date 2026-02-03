@@ -17,6 +17,7 @@ export const consts = {
   },
   errors: {
     portalError: 'Отсутствует контейнер портала',
+    generalError: 'Упс. Что-то пошло не так:',
   },
   modal: {
     buyButtonText: 'Купить',

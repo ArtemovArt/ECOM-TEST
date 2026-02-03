@@ -4,6 +4,20 @@
     margin-bottom: 15px;
 }
 
+@media (max-width: 480px) {
+  .searchBlockWrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .searchBlockWrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
 .heading {
     margin: 0;
 }

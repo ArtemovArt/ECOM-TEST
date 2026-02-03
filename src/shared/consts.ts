@@ -1,7 +1,7 @@
 export const consts = {
   headerActionItemsNames: {
     favourites: 'Избранное',
-    profile: 'Профиль',
+    cart: 'Корзина',
   },
   logoTexts: {
     logoTitle: 'EcomTestSneakers',
@@ -14,5 +14,13 @@ export const consts = {
   searchBlock: {
     title: 'Все кроссовки',
     nothingFound: 'По вашему запросу ничего не найдено',
+  },
+  errors: {
+    portalError: 'Отсутствует контейнер портала',
+  },
+  modal: {
+    buyButtonText: 'Купить',
+    alreadyInCart: 'Уже в корзине',
+    noItems: 'Пока что здесь ничего нет :(',
   },
 } as const;

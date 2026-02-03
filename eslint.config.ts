@@ -1,14 +1,14 @@
 // @ts-check
 
-import type { ConfigWithExtends } from '@eslint/config-helpers'
-import eslint from '@eslint/js'
-import { defineConfig } from 'eslint/config'
-import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
-import { flatConfigs as ImportXFlatConfigs } from 'eslint-plugin-import-x'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tseslint from 'typescript-eslint'
+import type { ConfigWithExtends } from '@eslint/config-helpers';
+import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { flatConfigs as ImportXFlatConfigs } from 'eslint-plugin-import-x';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
@@ -47,4 +47,4 @@ export default defineConfig(
       ],
     },
   },
-)
+);

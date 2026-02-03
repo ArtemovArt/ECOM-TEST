@@ -1,20 +1,32 @@
+import type { ReactNode } from 'react';
+
 export interface CardItemProps {
+  title: string;
   description: string;
   img: string;
   isFav?: boolean;
-  price: string;
+  price: number;
   isAddedInCard?: boolean;
+  id: string;
+}
+
+export interface CardItem {
+  title: string;
+  description: string;
+  img: string;
+  price: number;
   id: string;
 }
 
 export interface IHeaderActionItem {
   img: string;
   actionName: string;
+  action: () => void;
 }
 
 export interface CardContainerProps {
-  cards: CardItemProps[];
-  filterQuery: string;
+  cards: CardItem[];
+  filterQuery?: string;
 }
 
 export interface TypographyProps {
@@ -30,15 +42,38 @@ export interface HeadingProps {
   as?: 'p' | 'span' | 'div';
 }
 
-export type CardsArray = CardItemProps[];
-
 export interface SearchInputProps {
-  options: CardItemProps[];
+  options: CardItem[];
   placeholder?: string;
 }
 
 export interface SneakersStore {
-  favs: CardItemProps[];
+  favs: Map<string, Omit<CardItem, 'id'>>;
+  setFav: (id: string, newData: Omit<CardItem, 'id'>) => void;
+  removeFav: (id: string) => void;
+  checkIsFav: (id: string) => boolean;
+}
 
-  setFav: (newData: CardItemProps[]) => void;
+export interface CartStore {
+  cart: Map<string, Omit<CardItem, 'id'>>;
+  addItemInCart: (id: string, newData: Omit<CardItem, 'id'>) => void;
+  removeItemFromCart: (id: string) => void;
+  checkIsInCart: (id: string) => boolean;
+  // getCartSum: () => number;
+}
+
+export type ContainerOptions = { id: string; mountNode?: HTMLElement };
+
+type ModalType = 'cart' | 'favs' | 'card' | null;
+
+export interface ModalStore {
+  isOpen: boolean;
+  type: ModalType;
+  modalData: ReactNode | null;
+  modalHeader?: string;
+  props?: CardItemProps | null;
+  close: () => void;
+  open: (type: ModalType, props?: CardItemProps | null, header?: string) => void;
+  // setModalData: (children: ReactNode) => void;
+  // setModalHeader: (newHeader: string) => void;
 }

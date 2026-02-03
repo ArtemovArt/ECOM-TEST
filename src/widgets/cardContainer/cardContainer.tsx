@@ -8,26 +8,33 @@ import styles from './cardContainer.module.css';
 
 export const CardContainer: React.FC<CardContainerProps> = ({ cards, filterQuery = '' }) => {
   const cardsToMap = filterQuery ? filterFn(cards, filterQuery) : cards;
-  console.log('cardsToMap', cardsToMap);
+
+  if (cardsToMap.length === 0) {
+    if (filterQuery)
+      return (
+        <Typography as="p" className={styles.noItems}>
+          {consts.searchBlock.nothingFound}
+        </Typography>
+      );
+    return (
+      <Typography as="p" className={styles.noItems}>
+        {consts.modal.noItems}
+      </Typography>
+    );
+  }
+
   return (
-    <>
-      {cardsToMap.length === 0 && filterQuery ? (
-        <Typography as="p">{consts.searchBlock.nothingFound}</Typography>
-      ) : (
-        <div className={styles.contentWrapper}>
-          {cardsToMap?.map((card) => (
-            <CardItem
-              key={card?.id}
-              id={card?.id}
-              img={card?.img}
-              description={card?.description}
-              isAddedInCard={card?.isAddedInCard}
-              isFav={card?.isFav}
-              price={card?.price}
-            />
-          ))}
-        </div>
-      )}
-    </>
+    <div className={styles.contentWrapper}>
+      {cardsToMap?.map((card) => (
+        <CardItem
+          key={card.id}
+          id={card.id}
+          img={card?.img}
+          description={card?.description}
+          price={card?.price}
+          title={card?.title}
+        />
+      ))}
+    </div>
   );
 };

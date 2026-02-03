@@ -1,0 +1,188 @@
+.cardWrapper {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #f8f8f8;
+  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.cardTopContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardPriceWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardPriceSection {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  gap: 15px;
+}
+
+.cardPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 22px;
+  align-items: center;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardPriceTop {
+  color: #bdbdbd;
+}
+
+.cardPriceBottom {
+  font-weight: bold;
+}
+
+.svgButtonWrapper {
+  border: none;
+  background: none;
+}
+
+.sneakerImg {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sneakerImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sneakerTitle {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.buttonAddToCart {
+  display: inline-block;
+  border-radius: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0e3e4f;
+    border-radius: 10px;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: color-mix(in srgb, #0e3e4f, white 15%);
+    transition: all 0.3s;
+    border-radius: 10px;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.alreadyInCart {
+  display: inline-block;
+  border-radius: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #005f28;
+    border-radius: 10px;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: color-mix(in srgb, #005f28, white 15%);
+    transition: all 0.3s;
+    border-radius: 10px;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTopContent {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1025px) {
+  .cardTopContent {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (767px <= width <= 1024px) {
+  .sneakerImg {
+    margin: auto;
+  }
+}
